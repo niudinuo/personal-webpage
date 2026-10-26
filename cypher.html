@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encryption Lab</title>
+
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.25.1/full/pyodide.js"></script>
+
+    <style>
+        :root {
+            --accent1: #6a11cb;
+            --accent2: #2575fc;
+            --card-bg: rgba(255, 255, 255, 0.15);
+            --border: rgba(255, 255, 255, 0.25);
+        }
+
+        /* ===== GLOBAL FIXES ===== */
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            margin: 0;
+            padding: 32px 16px;
+            font-family: "Segoe UI", system-ui, sans-serif;
+            background: linear-gradient(135deg, var(--accent1), var(--accent2));
+            color: white;
+            overflow-x: hidden;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 36px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+
+            /* CENTER CONTENT */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .card h2 {
+            margin-top: 0;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        textarea {
+            width: 100%;
+            max-width: 100%;
+            min-height: 90px;
+            margin-top: 10px;
+            border-radius: 10px;
+            border: none;
+            padding: 12px;
+            font-size: 15px;
+            resize: none;
+            outline: none;
+        }
+
+        button {
+            margin-top: 14px;
+            padding: 10px 20px;
+            font-size: 15px;
+            font-weight: 500;
+            color: white;
+            background: linear-gradient(135deg, #ff8a00, #e52e71);
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.35);
+        }
+
+        pre {
+            width: 100%;
+            max-width: 100%;
+            margin-top: 15px;
+            padding: 14px;
+            min-height: 50px;
+            background: rgba(0, 0, 0, 0.35);
+            border-radius: 10px;
+            font-family: "JetBrains Mono", monospace;
+            font-size: 14px;
+            white-space: pre-wrap;
+            word-break: break-word;
+            overflow-wrap: anywhere;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 36px;
+            opacity: 0.8;
+            font-size: 14px;
+        }
+
+        /* ===== MOBILE SAFETY ===== */
+        @media (max-width: 400px) {
+            h1 {
+                font-size: 1.4rem;
+            }
+            .card {
+                padding: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>🔐 Encryption & Decryption Lab</h1>
+
+    <div class="container">
+
+        <!-- =============== ENCRYPT =============== -->
+        <div class="card">
+            <h2>🔒 Encrypt</h2>
+            <textarea id="encryptInput" placeholder="Enter message to encrypt" oninput="autoResize(this)"></textarea>
+            <button onclick="encrypt()">Encrypt Message</button>
+            <pre id="encryptOutput"></pre>
+        </div>
+
+        <!-- =============== DECRYPT =============== -->
+        <div class="card">
+            <h2>🔑 Decrypt</h2>
+            <textarea id="decryptInput" placeholder="Enter encrypted message" oninput="autoResize(this)"></textarea>
+            <button onclick="decrypt()">Decrypt Message</button>
+            <pre id="decryptOutput"></pre>
+        </div>
+
+    </div>
+
+    <footer>
+        © <span id="y"></span> Dinuo Niu • Powered by Python
+    </footer>
+
+    <script>
+        let pyodideReady = loadPyodide();
+
+        async function encrypt() {
+            const pyodide = await pyodideReady;
+            const message = document.getElementById("encryptInput").value;
+
+            // Pass message safely (supports multiline)
+            pyodide.globals.set("message", message);
+
+            const pythonCode = `
+        def caesar_cipher(message, shift):
+            addi = random.choice([2,3,4,5])
+            result = chr(shift + 67) + chr(addi + 69)
+            
+
+            for i,ch in enumerate(message):
+                if ch.isalpha():
+                    base = ord('A') if ch.isupper() else ord('a')
+                    # Shift within alphabet and wrap around
+                    new_char = chr((ord(ch) - base + shift + i % addi) % 26 + base)
+                    result += new_char
+                else:
+                    # Keep spaces, numbers, punctuation unchanged
+                    result += ch
+
+            return result
+
+
+        # Main program
+        import random
+        shift = random.choice([1,2,3,4,5,6,7,8,9])
+
+        output = caesar_cipher(message, shift)
+        output
+            `;
+
+            try {
+                const result = pyodide.runPython(pythonCode);
+                document.getElementById("encryptOutput").textContent = result;
+            } catch (err) {
+                document.getElementById("encryptOutput").textContent = err;
+            }
+        }
+
+        async function decrypt() {
+            const pyodide = await pyodideReady;
+            const message = document.getElementById("decryptInput").value;
+            pyodide.globals.set("message", message);
+            const pythonCode = `
+def caesar_decipher(encrypted, shift, addi):
+    result = ""
+
+    for i,ch in enumerate(encrypted):
+        if ch.isalpha():
+            base = ord('A') if ch.isupper() else ord('a')
+            new_char = chr((ord(ch) - base - shift - i % addi) % 26 + base)
+            result += new_char
+        else:
+            result += ch
+
+    return result
+
+
+# Main program
+try:
+    shift = ord(message[0]) - 67
+    addi = ord(message[1]) - 69
+    message = message[2:]
+    
+    output = caesar_decipher(message, shift, addi)
+except IndexError:
+    output = "<invalid input>"
+output
+            `;
+
+            try {
+                const result = pyodide.runPython(pythonCode);
+                document.getElementById("decryptOutput").textContent = result;
+            } catch (err) {
+                document.getElementById("decryptOutput").textContent = err;
+            }
+        }
+
+    function autoResize(textarea) {
+    textarea.style.height = "auto";          // reset
+    textarea.style.height = textarea.scrollHeight + "px";
+    }
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    </script>
+
+</body>
+</html>
