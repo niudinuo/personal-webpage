@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <meta charset="UTF-8" />
+  <title>Dino — Personal Homepage</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="A short introduction to Dino, a Chinese high school student studying A-Level." />
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #111827;
+      --text: #e5e7eb;
+      --muted: #9ca3af;
+      --accent: #38bdf8;
+      --link: #93c5fd;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0; padding: 0;
+      background: radial-gradient(1200px 600px at 20% -10%, #1f2937, var(--bg));
+      color: var(--text);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+    }
+    .container { max-width: 1000px; margin: 0 auto; padding: 40px 24px 80px; }
+    header { display: grid; gap: 14px; margin-bottom: 28px; }
+    .hero {
+      display: grid; gap: 20px; align-items: center;
+    }
+    @media (min-width: 840px) {
+      .hero { grid-template-columns: 1.2fr 0.8fr; }
+    }
+    header h1 { font-size: 2.4rem; margin: 0; }
+    header p { margin: 0; color: var(--muted); }
+    .tagline { color: var(--accent); font-weight: 600; }
+
+    .portrait {
+      width: 180px; height: 180px;
+      border-radius: 16px; overflow: hidden;
+      border: 1px solid rgba(148,163,184,0.18);
+      box-shadow: 0 10px 30px rgba(2,6,23,0.35);
+      justify-self: center;
+    }
+    .portrait img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+    }
+
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      border: 1px solid rgba(148,163,184,0.18);
+      border-radius: 16px;
+      padding: 20px;
+      margin: 18px 0;
+      box-shadow: 0 10px 30px rgba(2,6,23,0.35);
+      backdrop-filter: blur(6px);
+    }
+    .card h2 { margin: 0 0 10px; font-size: 1.2rem; }
+
+    .grid { display: grid; gap: 16px; }
+    @media (min-width: 840px) {
+      .grid { grid-template-columns: 1fr 1fr 1fr 1fr; }
+    }
+
+    ul { list-style: none; padding: 0; margin: 0; }
+    li { margin: 8px 0; }
+
+    .pill {
+      display: inline-block;
+      border: 1px dashed rgba(148,163,184,0.35);
+      padding: 6px 10px;
+      border-radius: 999px;
+      margin: 6px 6px 0 0;
+      color: var(--muted);
+    }
+
+    .ieltsscores {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+      margin-top: 8px;
+    }
+    @media (max-width: 600px) {
+      .ieltsscores { grid-template-columns: 1fr; }
+    }
+
+        .igcsescores {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 8px;
+    }
+    @media (max-width: 600px) {
+      .igcsescores { grid-template-columns: 1fr; }
+    }
+
+            .alevelscores {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-top: 8px;
+    }
+    @media (max-width: 600px) {
+      .alevelscores { grid-template-columns: 1fr; }
+    }
+
+    .score {
+      background: rgba(56,189,248,0.08);
+      border: 1px solid rgba(56,189,248,0.35);
+      border-radius: 12px;
+      padding: 12px;
+      text-align: center;
+    }
+    .score .label { color: var(--muted); font-size: 0.9rem; }
+    .score .sub { color: var(--muted); font-size: 0.75rem; margin-top: 2px; }
+    .score .value { color: var(--accent); font-weight: 700; font-size: 1.1rem; }
+
+    a { color: var(--link); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    footer {
+      margin-top: 26px;
+      color: var(--muted);
+      font-size: 0.95rem;
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+    .cta {
+      display: inline-block;
+      margin-top: 10px;
+      background: rgba(56,189,248,0.12);
+      color: var(--accent);
+      border: 1px solid rgba(56,189,248,0.35);
+      padding: 10px 14px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+    <header>
+      <div class="hero">
+        <div>
+          <span class="tagline">Hello, I’m</span>
+          <h1>Dino</h1>
+          <p>Chinese high school student studying A-Level</p>
+        </div>
+        <div class="portrait">
+          <img src="profile.jpg" alt="Dino portrait" />
+        </div>
+      </div>
+    </header>
+
+    <section class="card">
+      <h2>About me</h2>
+      <p>
+        I’m Dino, a high school student in NFLS in China with a passion for Math, Physics, and Computer Science.
+        I aim to study engineering abroad, combining my love for technology with real-world problem solving.
+        I enjoy building small projects, learning new tools, and exploring how theory turns into impactful applications.
+      </p>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <h2>Activities</h2>
+        <ul>
+          <li><a href="movies/movies.html">🎬 Watching movies</a></li>
+          <li><a href="french/french.html">📖 Learning French</a></li>
+          <li>💻 Programming</li>
+          <li>📸 Photography</li>
+
+        </ul>
+      </div>
+      <div class="card">
+        <h2>A-Level subjects</h2>
+        <span class="pill">Physics</span>
+        <span class="pill">Mathematics</span>
+        <span class="pill">Computer Science</span>
+        <span class="pill">Chemistry</span>
+      </div>
+      <div class="card">
+        <h2>My achievements</h2>
+        <span class="pill"><a href="achievements/IPC_online.jpg">IPC online</a></span>
+        <span class="pill"><a href="achievements/IPC.jpg">IPC</a></span>
+        <span class="pill"><a href="achievements/Euclid.pdf">Euclid contest</a></span>
+        <span class="pill"><a href="achievements/SMC.jpg">SMC</a></span>
+        <span class="pill"><a href="achievements/ACSL.jpg">ACSL preliminary</a></span>
+      </div>
+            <div class="card">
+        <h2>Mini projects</h2>
+        <ul>
+          <li><a href="cypher.html">🔐 Cypher Lab</a></li>
+          <li><a href="countdown.html">⏳ Time Counter</a></li>
+        </ul>
+      </div>
+    </section>
+
+
+    <section class="card">
+      <h2>IGCSE grades</h2>
+      <div class="igcsescores">
+        <div class="score">
+          <div class="label">Physics</div>
+          <div class="sub">0625</div>
+          <div class="value">A*</div>
+        </div>
+        <div class="score">
+          <div class="label">Chemistry</div>
+          <div class="sub">0620</div>
+          <div class="value">A*</div>
+        </div>
+        <div class="score">
+          <div class="label">Additional Mathematics</div>
+          <div class="sub">0606</div>
+          <div class="value">A*</div>
+        </div>
+        <div class="score">
+          <div class="label">Economics</div>
+          <div class="sub">0455</div>
+          <div class="value">A*</div>
+        </div>
+        <div class="score">
+          <div class="label">First Language Chinese</div>
+          <div class="sub">0509</div>
+          <div class="value">A*</div>
+        </div>
+        <div class="score">
+          <div class="label">Mathematics</div>
+          <div class="sub">0580</div>
+          <div class="value">A*</div>
+        </div>
+        <div class="score">
+          <div class="label">English as a Second Language</div>
+          <div class="sub">0511</div>
+          <div class="value">B</div>
+        </div>
+      </div>
+    </section>
+    
+    <section class="card">
+      <h2>A-LEVEL grades</h2>
+      <div class="alevelscores">
+        <div class="score">
+          <div class="label">Mathematics</div>
+          <div class="sub">9709</div>
+          <div class="value">A*</div>
+        </div>
+        <div class="score">
+          <div class="label">Physics</div>
+          <div class="sub">9702</div>
+          <div class="value">a(ASL)</div>
+        </div>
+        <div class="score">
+          <div class="label">Chemistry</div>
+          <div class="sub">9701</div>
+          <div class="value">a(ASL)</div>
+        </div>
+        <div class="score">
+          <div class="label">Computer Science</div>
+          <div class="sub">9618</div>
+          <div class="value">a(ASL)</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>IELTS scores</h2>
+      <div class="ieltsscores">
+        <div class="score"><div class="label">Listening</div><div class="value">8.5</div></div>
+        <div class="score"><div class="label">Reading</div><div class="value">9.0</div></div>
+        <div class="score"><div class="label">Writing</div><div class="value">7.0</div></div>
+        <div class="score"><div class="label">Speaking</div><div class="value">7.0</div></div>
+        <div class="score"><div class="label">Overall</div><div class="value">8.0</div></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Contact</h2>
+      <p>
+        Email: <a href="mailto:dino.niu27@nflsicc.com">dino.niu27@nflsicc.com</a><br>
+        WeChat: dinoptlsm
+      </p>
+      <a class="cta" href="mailto:dino.niu27@nflsicc.com">Say hello</a>
+    </section>
+
+    <footer>
+      © <span id="y"></span> Dinuo Niu · <a href="https://github.com/Nanjing-Foreign-Language-School/personal-website-DinoNFLS/" target="_blank">my GitHub repository</a>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
