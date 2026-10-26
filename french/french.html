@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My French Learning Journey 🇫🇷</title>
+
+  <style>
+    :root {
+      --bg1: #0f2027;
+      --bg2: #203a43;
+      --bg3: #2c5364;
+      --accent: #5eead4;
+      --card-bg: rgba(255, 255, 255, 0.12);
+      --text-main: #f8fafc;
+      --text-muted: #cbd5e1;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Inter", "Segoe UI", system-ui, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--bg1), var(--bg2), var(--bg3));
+      color: var(--text-main);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 900px;
+      width: 100%;
+      animation: fadeIn 1.2s ease-out;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      color: var(--text-muted);
+      font-size: 1.2rem;
+    }
+
+    /* Language toggle button (no overlap) */
+    .lang-toggle {
+      margin: 25px auto 0;
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: var(--text-main);
+      padding: 8px 16px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .lang-toggle:hover {
+      background: rgba(255,255,255,0.25);
+      transform: translateY(-2px);
+    }
+
+    .grid {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      backdrop-filter: blur(14px);
+      border-radius: 18px;
+      padding: 25px 28px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+    }
+
+    .card h2 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .icon {
+      font-size: 1.7rem;
+    }
+
+    .card p, li {
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    .streak {
+      font-size: 2.6rem;
+      font-weight: 800;
+      color: var(--accent);
+      margin: 10px 0;
+    }
+
+    ul {
+      margin-top: 10px;
+      padding-left: 18px;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    footer span {
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    /* Language handling */
+    [data-lang="fr"] {
+      display: none;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(25px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <h1 data-lang="en">My French Learning Journey 🇫🇷</h1>
+      <h1 data-lang="fr">Mon parcours d’apprentissage du français 🇫🇷</h1>
+
+      <p data-lang="en">
+        Learning French with Duolingo — for curiosity, for fun, and for the future
+      </p>
+      <p data-lang="fr">
+        Apprendre le français avec Duolingo — par curiosité, pour le plaisir, et pour l’avenir
+      </p>
+
+      <button class="lang-toggle" onclick="toggleLanguage()">FR / EN</button>
+    </header>
+
+    <section class="grid">
+      <div class="card">
+        <h2><span class="icon">✨</span>
+          <span data-lang="en">Why I Learn French</span>
+          <span data-lang="fr">Pourquoi j’apprends le français</span>
+        </h2>
+
+        <p data-lang="en">
+          I learn French mainly for fun — I enjoy the rhythm of the language,
+          the way words flow together, and the small sense of achievement after
+          completing each lesson.
+        </p>
+        <p data-lang="fr">
+          J’apprends le français principalement pour le plaisir — j’aime le rythme
+          de la langue, la façon dont les mots s’enchaînent, et le petit sentiment
+          de réussite après chaque leçon.
+        </p>
+
+        <p data-lang="en">
+          At the same time, French will be extremely useful for my future university
+          life in <strong>Canada</strong>, where it is one of the official languages.
+          If I have enough free time, I plan to learn French more systematically,
+          going beyond daily practice and into structured grammar and reading.
+        </p>
+        <p data-lang="fr">
+          Parallèlement, le français me sera extrêmement utile pour ma future vie
+          universitaire au <strong>Canada</strong>, où il est l'une des langues officielles.
+          Si j'ai suffisamment de temps libre, je compte apprendre le français de
+          manière plus systématique, en allant au-delà de la pratique quotidienne et
+          en me concentrant sur la grammaire et la lecture structurées.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2><span class="icon">🔥</span>
+          <span data-lang="en">Duolingo Streak</span>
+          <span data-lang="fr">Série Duolingo</span>
+        </h2>
+
+        <p data-lang="en">I have maintained a Duolingo learning streak of</p>
+        <p data-lang="fr">J’ai maintenu une série d’apprentissage sur Duolingo de</p>
+
+        <div class="streak">
+            <p data-lang="en">700+ Days</p>
+            <p data-lang="fr">700+ Jours</p>
+        </div>
+
+        <p data-lang="en">
+          This streak represents consistency and self-discipline.
+          Even on busy days, I try to spend at least a few minutes keeping my French alive.
+        </p>
+        <p data-lang="fr">
+          Cette pratique régulière témoigne de ma constance et de mon autodiscipline.
+          Même les jours chargés, j'essaie de consacrer quelques minutes à entretenir mon français.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2><span class="icon">📘</span>
+          <span data-lang="en">What I’ve Learned</span>
+          <span data-lang="fr">Ce que j’ai appris</span>
+        </h2>
+
+        <ul data-lang="en">
+          <li>Basic grammar such as gendered nouns and verb conjugations</li>
+          <li>Everyday vocabulary for travel, food, and school</li>
+          <li>Simple sentence structures</li>
+          <li>Basic listening and reading comprehension</li>
+        </ul>
+
+        <ul data-lang="fr">
+          <li>Grammaire de base : genres des noms et conjugaisons</li>
+          <li>Vocabulaire quotidien (voyage, nourriture, école)</li>
+          <li>Structures de phrases simples</li>
+          <li>Compréhension orale et écrite de base</li>
+        </ul>
+      </div>
+    </section>
+
+    <footer>
+      <p>
+        🇫🇷 <span>Petit à petit, l’oiseau fait son nid.</span>
+      </p>
+    </footer>
+  </div>
+
+  <script>
+    let currentLang = "en";
+
+    function toggleLanguage() {
+      const en = document.querySelectorAll('[data-lang="en"]');
+      const fr = document.querySelectorAll('[data-lang="fr"]');
+
+      if (currentLang === "en") {
+        en.forEach(el => el.style.display = "none");
+        fr.forEach(el => el.style.display = "block");
+        currentLang = "fr";
+      } else {
+        fr.forEach(el => el.style.display = "none");
+        en.forEach(el => el.style.display = "block");
+        currentLang = "en";
+      }
+    }
+  </script>
+</body>
+</html>
