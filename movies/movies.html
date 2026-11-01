@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Hobby – Watching Movies</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: linear-gradient(120deg, #0f2027, #203a43, #2c5364);
+            color: #ffffff;
+        }
+
+        header {
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.2em;
+            max-width: 700px;
+            margin: auto;
+            opacity: 0.9;
+        }
+
+        section {
+            max-width: 1000px;
+            margin: 60px auto;
+            padding: 0 20px;
+        }
+
+        h2 {
+            border-left: 5px solid #00c6ff;
+            padding-left: 15px;
+            margin-bottom: 25px;
+            color: #00c6ff;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 40px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        ul li {
+            margin: 8px 0;
+            font-size: 1.1em;
+        }
+
+        /* Movie gallery */
+        .movie-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+
+        .movie-card {
+            transition: transform 0.3s;
+        }
+
+        .movie-card:hover {
+            transform: scale(1.05);
+        }
+
+        .poster {
+            aspect-ratio: 2 / 3;
+            width: 100%;
+            max-width: 240px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: auto;
+        }
+
+        .poster-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;   /* no crop, no stretch */
+            border-radius: 15px;
+            border: 2px dashed rgba(255, 255, 255, 0.4);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .movie-title {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            opacity: 0.7;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>🎬 My Hobby: Watching Movies</h1>
+    <p>
+        Watching movies is my way of exploring imagination and ideas beyond real life.
+        From complex science-fiction concepts to heart-warming animated stories,
+        movies help me relax, think creatively, and appreciate storytelling through visuals.
+    </p>
+</header>
+
+<section>
+    <div class="card">
+        <h2>Favourite Genres</h2>
+        <ul>
+            <li>🚀 Science Fiction</li>
+            <li>🎨 Cartoon / Animation</li>
+        </ul>
+    </div>
+
+    <div class="card">
+        <h2>Favourite Director & Studio</h2>
+        <p>
+            My favourite director is <strong>Christopher Nolan</strong>, whose movies are
+            known for their complex structures and thought-provoking themes.
+        </p>
+        <p>
+            My favourite studio is <strong>Pixar</strong>, famous for producing animated
+            films that combine stunning visuals with sentimental stories.
+        </p>
+    </div>
+
+    <div class="card">
+        <h2>Favourite Movies</h2>
+        <div class="movie-grid">
+            <div class="movie-card">
+                <div class="poster">
+                    <a href="https://www.imdb.com/title/tt1375666/" target="_blank">
+                        <img src="Inception.jpg" alt="Inception Poster" class="poster-img">
+                    </a>
+                </div>
+                <div class="movie-title">Inception</div>
+            </div>
+
+            <div class="movie-card">
+                <div class="poster">
+                    <a href="https://www.imdb.com/title/tt6723592/" target="_blank">
+                        <img src="Tenet.jpg" alt="Tenet Poster" class="poster-img">
+                    </a>
+                </div>
+                <div class="movie-title">Tenet</div>
+            </div>
+
+            <div class="movie-card">
+                <div class="poster">
+                    <a href="https://www.imdb.com/title/tt0816692/" target="_blank">
+                        <img src="Interstellar.jpg" alt="Interstellar Poster" class="poster-img">
+                    </a>
+                </div>
+                <div class="movie-title">Interstellar</div>
+            </div>
+
+            <div class="movie-card">
+                <div class="poster">
+                    <a href="https://www.imdb.com/title/tt12042730/" target="_blank">
+                        <img src="Project_Hail_Mary.jpg" alt="PHM Poster" class="poster-img">
+                    </a>
+                </div>
+                <div class="movie-title">Project Hail Mary</div>
+            </div>
+
+            <div class="movie-card">
+                <div class="poster">
+                    <a href="https://www.imdb.com/title/tt1757678/" target="_blank">
+                        <img src="Avatar3.jpg" alt="Avatar: Fire and Ash Poster" class="poster-img">
+                    </a>
+                </div>
+                <div class="movie-title">Avatar: Fire and Ash</div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<footer>
+    © <span id="y"></span> · My Movie Hobby Page
+</footer>
+    
+<script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+</script>
+    
+</body>
+</html>
